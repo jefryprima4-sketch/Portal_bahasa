@@ -44,7 +44,7 @@ export function QuizPlayer({ quiz, questions }: QuizPlayerProps) {
   const [answers, setAnswers] = useState<Record<string, string>>(saved?.answers || {});
   const [voiceBlobs, setVoiceBlobs] = useState<Record<string, Blob>>({});
   const [activeQuestion, setActiveQuestion] = useState(0);
-  const [tabSwitchCount, setTabSwitchCount] = useState(saved?.tabSwitchCount || 0);
+  const [tabSwitchCount, setTabSwitchCount] = useState<number>(saved?.tabSwitchCount || 0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
 
