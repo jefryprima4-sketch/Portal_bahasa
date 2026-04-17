@@ -1,0 +1,1782 @@
+[
+  {
+    "style": "Normal",
+    "text": "🧱 A. Arsitektur Baru (Rekomendasi Final)"
+  },
+  {
+    "style": "Normal",
+    "text": "Stack Modern:"
+  },
+  {
+    "style": "Normal",
+    "text": "Frontend: Next.js (React) → deploy di Vercel"
+  },
+  {
+    "style": "Normal",
+    "text": "Backend: Supabase (BaaS)"
+  },
+  {
+    "style": "Normal",
+    "text": "Database: Supabase PostgreSQL"
+  },
+  {
+    "style": "Normal",
+    "text": "Auth: Supabase Auth (JWT + RBAC)"
+  },
+  {
+    "style": "Normal",
+    "text": "Storage: Supabase Storage (audio/video)"
+  },
+  {
+    "style": "Normal",
+    "text": "Realtime: Supabase Realtime (presensi & monitoring)"
+  },
+  {
+    "style": "Normal",
+    "text": "🧩 B. System Architecture (Updated)"
+  },
+  {
+    "style": "Normal",
+    "text": "[ Client (Browser) ]\n        ↓\n[ Next.js App (Vercel) ]\n        ↓\n[ Supabase ]\n   ├── Auth (Login, JWT)\n   ├── Database (PostgreSQL)\n   ├── Storage (Audio/Video)\n   ├── Edge Functions (Server logic)\n   └── Realtime (Presence, Monitoring)"
+  },
+  {
+    "style": "Normal",
+    "text": "👤 C. Auth & RBAC (Revisi Penting)"
+  },
+  {
+    "style": "Normal",
+    "text": "Login System:"
+  },
+  {
+    "style": "Normal",
+    "text": "Email format:"
+  },
+  {
+    "style": "Normal",
+    "text": "Mahasiswa: nim@ptki.ac.id"
+  },
+  {
+    "style": "Normal",
+    "text": "Dosen: nip@ptki.ac.id"
+  },
+  {
+    "style": "Normal",
+    "text": "Role:"
+  },
+  {
+    "style": "Normal",
+    "text": "student"
+  },
+  {
+    "style": "Normal",
+    "text": "instructor"
+  },
+  {
+    "style": "Normal",
+    "text": "admin"
+  },
+  {
+    "style": "Normal",
+    "text": "Implementasi:"
+  },
+  {
+    "style": "Normal",
+    "text": "Supabase Auth + Row Level Security (RLS)"
+  },
+  {
+    "style": "Normal",
+    "text": "Contoh policy:"
+  },
+  {
+    "style": "Normal",
+    "text": "-- Mahasiswa hanya bisa lihat datanya sendiri\nCREATE POLICY \"Student can view own data\"\nON grades\nFOR SELECT\nUSING (auth.uid() = student_id);"
+  },
+  {
+    "style": "Normal",
+    "text": "🗄️ D. Database Schema (WAJIB ADA)"
+  },
+  {
+    "style": "Normal",
+    "text": "Core Tables:"
+  },
+  {
+    "style": "Normal",
+    "text": "1. users"
+  },
+  {
+    "style": "Normal",
+    "text": "id (uuid)\nname\nemail\nrole (student | instructor | admin)\nnim_nip\ncreated_at"
+  },
+  {
+    "style": "Normal",
+    "text": "2. courses"
+  },
+  {
+    "style": "Normal",
+    "text": "id\ntitle\ndescription\ninstructor_id"
+  },
+  {
+    "style": "Normal",
+    "text": "3. materials"
+  },
+  {
+    "style": "Normal",
+    "text": "id\ncourse_id\ntitle\ntype (pdf | audio | video)\nfile_url"
+  },
+  {
+    "style": "Normal",
+    "text": "4. quizzes"
+  },
+  {
+    "style": "Normal",
+    "text": "id\ncourse_id\ntitle\nduration"
+  },
+  {
+    "style": "Normal",
+    "text": "5. questions"
+  },
+  {
+    "style": "Normal",
+    "text": "id\nquiz_id\ntype (mcq | essay | matching)\nquestion_text"
+  },
+  {
+    "style": "Normal",
+    "text": "6. answers"
+  },
+  {
+    "style": "Normal",
+    "text": "id\nquestion_id\nanswer_text\nis_correct"
+  },
+  {
+    "style": "Normal",
+    "text": "7. submissions"
+  },
+  {
+    "style": "Normal",
+    "text": "id\nquiz_id\nstudent_id\nscore\nsubmitted_at"
+  },
+  {
+    "style": "Normal",
+    "text": "8. attendance"
+  },
+  {
+    "style": "Normal",
+    "text": "id\nstudent_id\ntimestamp\nmethod (qr | manual)"
+  },
+  {
+    "style": "Normal",
+    "text": "🎧 E. Storage Strategy (Supabase)"
+  },
+  {
+    "style": "Normal",
+    "text": "Gunakan bucket:"
+  },
+  {
+    "style": "Normal",
+    "text": "materials/ → PDF & video"
+  },
+  {
+    "style": "Normal",
+    "text": "audio/ → listening test"
+  },
+  {
+    "style": "Normal",
+    "text": "submissions/ → recording speaking"
+  },
+  {
+    "style": "Normal",
+    "text": "Keuntungan:"
+  },
+  {
+    "style": "Normal",
+    "text": "Signed URL (secure access)"
+  },
+  {
+    "style": "Normal",
+    "text": "CDN built-in"
+  },
+  {
+    "style": "Normal",
+    "text": "🧠 F. Anti-Cheating (Realistis & Implementable)"
+  },
+  {
+    "style": "Normal",
+    "text": "Ganti konsep lama dengan:"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ Solusi realistis:"
+  },
+  {
+    "style": "Normal",
+    "text": "Randomize soal"
+  },
+  {
+    "style": "Normal",
+    "text": "Shuffle jawaban"
+  },
+  {
+    "style": "Normal",
+    "text": "Timer server-side"
+  },
+  {
+    "style": "Normal",
+    "text": "Batasi 1 session per user"
+  },
+  {
+    "style": "Normal",
+    "text": "Track:"
+  },
+  {
+    "style": "Normal",
+    "text": "tab switching (visibility API)"
+  },
+  {
+    "style": "Normal",
+    "text": "multiple login"
+  },
+  {
+    "style": "Normal",
+    "text": "❌ Jangan:"
+  },
+  {
+    "style": "Normal",
+    "text": "Lock tab (tidak reliable)"
+  },
+  {
+    "style": "Normal",
+    "text": "📊 G. Monitoring & Analytics"
+  },
+  {
+    "style": "Normal",
+    "text": "Tambahkan:"
+  },
+  {
+    "style": "Normal",
+    "text": "Dashboard Dosen:"
+  },
+  {
+    "style": "Normal",
+    "text": "Progress mahasiswa"
+  },
+  {
+    "style": "Normal",
+    "text": "Nilai rata-rata"
+  },
+  {
+    "style": "Normal",
+    "text": "Heatmap kesulitan soal"
+  },
+  {
+    "style": "Normal",
+    "text": "Tools:"
+  },
+  {
+    "style": "Normal",
+    "text": "Supabase logs"
+  },
+  {
+    "style": "Normal",
+    "text": "PostHog / Plausible (opsional)"
+  },
+  {
+    "style": "Normal",
+    "text": "⚡ H. API & Logic (Supabase Edge Functions)"
+  },
+  {
+    "style": "Normal",
+    "text": "Gunakan untuk:"
+  },
+  {
+    "style": "Normal",
+    "text": "Submit quiz"
+  },
+  {
+    "style": "Normal",
+    "text": "Auto grading"
+  },
+  {
+    "style": "Normal",
+    "text": "Generate score"
+  },
+  {
+    "style": "Normal",
+    "text": "Anti-cheat validation"
+  },
+  {
+    "style": "Normal",
+    "text": "Contoh flow:"
+  },
+  {
+    "style": "Normal",
+    "text": "Client → submit quiz →\nEdge Function →\nValidate →\nSave DB →\nReturn score"
+  },
+  {
+    "style": "Normal",
+    "text": "🎨 I. Frontend Structure (Next.js)"
+  },
+  {
+    "style": "Normal",
+    "text": "Pages:"
+  },
+  {
+    "style": "Normal",
+    "text": "/login"
+  },
+  {
+    "style": "Normal",
+    "text": "/dashboard"
+  },
+  {
+    "style": "Normal",
+    "text": "/course/[id]"
+  },
+  {
+    "style": "Normal",
+    "text": "/quiz/[id]"
+  },
+  {
+    "style": "Normal",
+    "text": "/admin"
+  },
+  {
+    "style": "Normal",
+    "text": "State:"
+  },
+  {
+    "style": "Normal",
+    "text": "React Query / TanStack Query (WAJIB)"
+  },
+  {
+    "style": "Normal",
+    "text": "Supabase client"
+  },
+  {
+    "style": "Normal",
+    "text": "📈 J. Roadmap Baru (Lebih Realistis)"
+  },
+  {
+    "style": "Normal",
+    "text": "🚀 Fase 1 (MVP - 4–6 minggu)"
+  },
+  {
+    "style": "Normal",
+    "text": "Auth (Supabase)"
+  },
+  {
+    "style": "Normal",
+    "text": "RBAC"
+  },
+  {
+    "style": "Normal",
+    "text": "Upload materi"
+  },
+  {
+    "style": "Normal",
+    "text": "Quiz sederhana"
+  },
+  {
+    "style": "Normal",
+    "text": "Auto grading"
+  },
+  {
+    "style": "Normal",
+    "text": "🚀 Fase 2"
+  },
+  {
+    "style": "Normal",
+    "text": "Presensi QR"
+  },
+  {
+    "style": "Normal",
+    "text": "Listening player"
+  },
+  {
+    "style": "Normal",
+    "text": "Dashboard dosen"
+  },
+  {
+    "style": "Normal",
+    "text": "🚀 Fase 3"
+  },
+  {
+    "style": "Normal",
+    "text": "Speaking (record audio)"
+  },
+  {
+    "style": "Normal",
+    "text": "AI scoring (opsional)"
+  },
+  {
+    "style": "Normal",
+    "text": "Analytics lanjutan"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ K. Acceptance Criteria (Revisi)"
+  },
+  {
+    "style": "Normal",
+    "text": "Tambahkan:"
+  },
+  {
+    "style": "Normal",
+    "text": "Login < 2 detik"
+  },
+  {
+    "style": "Normal",
+    "text": "Audio streaming tanpa buffering > 90%"
+  },
+  {
+    "style": "Normal",
+    "text": "100 user simultan tanpa crash"
+  },
+  {
+    "style": "Normal",
+    "text": "Quiz submit tidak hilang walau refresh"
+  },
+  {
+    "style": "Normal",
+    "text": "💡 3. Insight Penting (Game-Changer)"
+  },
+  {
+    "style": "Normal",
+    "text": "🔥 Kenapa Supabase + Vercel cocok:"
+  },
+  {
+    "style": "Normal",
+    "text": "Tidak perlu backend server tradisional"
+  },
+  {
+    "style": "Normal",
+    "text": "Lebih cepat develop (hemat 50–70% waktu)"
+  },
+  {
+    "style": "Normal",
+    "text": "Built-in:"
+  },
+  {
+    "style": "Normal",
+    "text": "Auth"
+  },
+  {
+    "style": "Normal",
+    "text": "Storage"
+  },
+  {
+    "style": "Normal",
+    "text": "Realtime"
+  },
+  {
+    "style": "Normal",
+    "text": "Security"
+  },
+  {
+    "style": "Normal",
+    "text": "🧭 4. Saran Strategis (Dari pengalaman real project)"
+  },
+  {
+    "style": "Normal",
+    "text": "Kalau ini untuk kampus:"
+  },
+  {
+    "style": "Normal",
+    "text": "👉 Mulai dari lab saja dulu (LAN-based)\nJangan langsung full publik"
+  },
+  {
+    "style": "Normal",
+    "text": "👉 Fokus:"
+  },
+  {
+    "style": "Normal",
+    "text": "Listening module (nilai jual utama)"
+  },
+  {
+    "style": "Normal",
+    "text": "CBT stabil (tanpa bug)"
+  },
+  {
+    "style": "Normal",
+    "text": "👉 Hindari:"
+  },
+  {
+    "style": "Normal",
+    "text": "Over-engineering (AI speaking di awal ❌)"
+  },
+  {
+    "style": "Normal",
+    "text": "🔐 Revisi Final: Auth & “SSO” (Lab-Only Version)"
+  },
+  {
+    "style": "Normal",
+    "text": "❗ Klarifikasi Penting"
+  },
+  {
+    "style": "Normal",
+    "text": "Yang kamu sebut “SSO” di PRD awal sebenarnya bukan SSO."
+  },
+  {
+    "style": "Normal",
+    "text": "👉 Karena:"
+  },
+  {
+    "style": "Normal",
+    "text": "Tidak ada integrasi ke sistem kampus (LDAP / SIAKAD)"
+  },
+  {
+    "style": "Normal",
+    "text": "User daftar sendiri"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ Jadi kita ubah istilahnya jadi:"
+  },
+  {
+    "style": "Normal",
+    "text": "Email-based Authentication + NIM/NIP Identity Mapping"
+  },
+  {
+    "style": "Normal",
+    "text": "🧩 1. Konsep Auth yang Direkomendasikan"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ Model Login"
+  },
+  {
+    "style": "Normal",
+    "text": "User login menggunakan:"
+  },
+  {
+    "style": "Normal",
+    "text": "Email"
+  },
+  {
+    "style": "Normal",
+    "text": "Password"
+  },
+  {
+    "style": "Normal",
+    "text": "Tambahan:"
+  },
+  {
+    "style": "Normal",
+    "text": "Field NIM/NIP hanya sebagai identitas, bukan login utama"
+  },
+  {
+    "style": "Normal",
+    "text": "👤 2. Flow User Registration"
+  },
+  {
+    "style": "Normal",
+    "text": "📌 Mahasiswa"
+  },
+  {
+    "style": "Normal",
+    "text": "User daftar:"
+  },
+  {
+    "style": "Normal",
+    "text": "Nama"
+  },
+  {
+    "style": "Normal",
+    "text": "Email"
+  },
+  {
+    "style": "Normal",
+    "text": "Password"
+  },
+  {
+    "style": "Normal",
+    "text": "NIM"
+  },
+  {
+    "style": "Normal",
+    "text": "Sistem:"
+  },
+  {
+    "style": "Normal",
+    "text": "Simpan di Supabase Auth"
+  },
+  {
+    "style": "Normal",
+    "text": "Insert ke tabel users"
+  },
+  {
+    "style": "Normal",
+    "text": "📌 Dosen / Admin"
+  },
+  {
+    "style": "Normal",
+    "text": "👉 Tidak boleh daftar sendiri"
+  },
+  {
+    "style": "Normal",
+    "text": "Flow:"
+  },
+  {
+    "style": "Normal",
+    "text": "Dibuatkan oleh Admin (manual)"
+  },
+  {
+    "style": "Normal",
+    "text": "🧱 3. Struktur Auth di Supabase"
+  },
+  {
+    "style": "Normal",
+    "text": "Supabase akan punya 2 layer:"
+  },
+  {
+    "style": "Normal",
+    "text": "🔹 A. Auth Table (otomatis dari Supabase)"
+  },
+  {
+    "style": "Normal",
+    "text": "auth.users"
+  },
+  {
+    "style": "Normal",
+    "text": "Berisi:"
+  },
+  {
+    "style": "Normal",
+    "text": "id (uuid)"
+  },
+  {
+    "style": "Normal",
+    "text": "email"
+  },
+  {
+    "style": "Normal",
+    "text": "password (hashed)"
+  },
+  {
+    "style": "Normal",
+    "text": "🔹 B. Public Users Table (custom)"
+  },
+  {
+    "style": "Normal",
+    "text": "users"
+  },
+  {
+    "style": "Normal",
+    "text": "id uuid (FK ke auth.users.id)\nname text\nemail text\nnim_nip text\nrole text (student | instructor | admin)\ncreated_at timestamp"
+  },
+  {
+    "style": "Normal",
+    "text": "🔐 4. RBAC (Role-Based Access Control)"
+  },
+  {
+    "style": "Normal",
+    "text": "Gunakan kombinasi:"
+  },
+  {
+    "style": "Normal",
+    "text": "Supabase Auth (JWT)"
+  },
+  {
+    "style": "Normal",
+    "text": "Row Level Security (RLS)"
+  },
+  {
+    "style": "Normal",
+    "text": "Contoh Policy"
+  },
+  {
+    "style": "Normal",
+    "text": "🎓 Mahasiswa hanya bisa lihat datanya"
+  },
+  {
+    "style": "Normal",
+    "text": "CREATE POLICY \"student can read own profile\"\nON users\nFOR SELECT\nUSING (auth.uid() = id);"
+  },
+  {
+    "style": "Normal",
+    "text": "👨‍🏫 Dosen bisa lihat mahasiswa di kelasnya"
+  },
+  {
+    "style": "Normal",
+    "text": "-- via join ke courses"
+  },
+  {
+    "style": "Normal",
+    "text": "🔄 5. Flow Login (Final)"
+  },
+  {
+    "style": "Normal",
+    "text": "User login →\nSupabase Auth →\nJWT token →\nFetch profile dari table users →\nRedirect ke dashboard sesuai role"
+  },
+  {
+    "style": "Normal",
+    "text": "🧠 6. Validasi NIM (Opsional tapi disarankan)"
+  },
+  {
+    "style": "Normal",
+    "text": "Karena tidak terhubung ke kampus:"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ Solusi ringan:"
+  },
+  {
+    "style": "Normal",
+    "text": "Validasi format:"
+  },
+  {
+    "style": "Normal",
+    "text": "Panjang (misalnya 8–10 digit)"
+  },
+  {
+    "style": "Normal",
+    "text": "Numeric only"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ Solusi lebih kuat:"
+  },
+  {
+    "style": "Normal",
+    "text": "Upload daftar NIM (CSV oleh admin)"
+  },
+  {
+    "style": "Normal",
+    "text": "Saat register:"
+  },
+  {
+    "style": "Normal",
+    "text": "cek apakah NIM ada di whitelist"
+  },
+  {
+    "style": "Normal",
+    "text": "🔒 7. Security Improvement (WAJIB)"
+  },
+  {
+    "style": "Normal",
+    "text": "Tambahkan:"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ Email Verification"
+  },
+  {
+    "style": "Normal",
+    "text": "Supabase built-in"
+  },
+  {
+    "style": "Normal",
+    "text": "Mencegah akun fake"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ Rate Limit"
+  },
+  {
+    "style": "Normal",
+    "text": "Hindari spam register/login"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ Unique Constraint"
+  },
+  {
+    "style": "Normal",
+    "text": "UNIQUE (nim_nip)"
+  },
+  {
+    "style": "Normal",
+    "text": "🚫 8. Hal yang HARUS DIHINDARI"
+  },
+  {
+    "style": "Normal",
+    "text": "❌ Login pakai NIM saja\n→ Tidak aman"
+  },
+  {
+    "style": "Normal",
+    "text": "❌ Role dari frontend\n→ Harus dari DB"
+  },
+  {
+    "style": "Normal",
+    "text": "❌ Tanpa email verification\n→ rawan spam akun"
+  },
+  {
+    "style": "Normal",
+    "text": "⚙️ 9. Implementasi Cepat (Supabase)"
+  },
+  {
+    "style": "Normal",
+    "text": "Step-by-step:"
+  },
+  {
+    "style": "Normal",
+    "text": "1. Setup Auth"
+  },
+  {
+    "style": "Normal",
+    "text": "Enable email/password"
+  },
+  {
+    "style": "Normal",
+    "text": "2. Buat table users"
+  },
+  {
+    "style": "Normal",
+    "text": "3. Trigger setelah signup:"
+  },
+  {
+    "style": "Normal",
+    "text": "-- Supabase function / trigger\nINSERT INTO users (id, email, role)\nVALUES (auth.uid(), new.email, 'student');"
+  },
+  {
+    "style": "Normal",
+    "text": "4. Frontend (Next.js)"
+  },
+  {
+    "style": "Normal",
+    "text": "Flow:"
+  },
+  {
+    "style": "Normal",
+    "text": "await supabase.auth.signUp({\n  email,\n  password\n})"
+  },
+  {
+    "style": "Normal",
+    "text": "Lalu insert data tambahan:"
+  },
+  {
+    "style": "Normal",
+    "text": "await supabase.from('users').insert({\n  id: user.id,\n  nim_nip: nim,\n  role: 'student'\n})"
+  },
+  {
+    "style": "Normal",
+    "text": "🎯 10. Final Decision Summary"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ Gunakan:"
+  },
+  {
+    "style": "Normal",
+    "text": "Email + password login"
+  },
+  {
+    "style": "Normal",
+    "text": "NIM sebagai metadata"
+  },
+  {
+    "style": "Normal",
+    "text": "Admin create dosen/admin"
+  },
+  {
+    "style": "Normal",
+    "text": "Supabase Auth + RLS"
+  },
+  {
+    "style": "Normal",
+    "text": "❌ Tidak perlu:"
+  },
+  {
+    "style": "Normal",
+    "text": "SSO kampus"
+  },
+  {
+    "style": "Normal",
+    "text": "LDAP"
+  },
+  {
+    "style": "Normal",
+    "text": "OAuth"
+  },
+  {
+    "style": "Normal",
+    "text": "💡 Insight Penting"
+  },
+  {
+    "style": "Normal",
+    "text": "Dengan model ini:"
+  },
+  {
+    "style": "Normal",
+    "text": "👉 Kamu dapat:"
+  },
+  {
+    "style": "Normal",
+    "text": "Simpel (tidak tergantung kampus)"
+  },
+  {
+    "style": "Normal",
+    "text": "Cepat develop"
+  },
+  {
+    "style": "Normal",
+    "text": "Mudah scaling"
+  },
+  {
+    "style": "Normal",
+    "text": "👉 Tapi tetap:"
+  },
+  {
+    "style": "Normal",
+    "text": "Aman"
+  },
+  {
+    "style": "Normal",
+    "text": "Terstruktur"
+  },
+  {
+    "style": "Normal",
+    "text": "Bisa diupgrade ke SSO nanti"
+  },
+  {
+    "style": "Normal",
+    "text": "🚀 1. Core Features (Versi Final & Terstruktur)"
+  },
+  {
+    "style": "Normal",
+    "text": "🎓 A. Authentication & User Management"
+  },
+  {
+    "style": "Normal",
+    "text": "Tujuan:"
+  },
+  {
+    "style": "Normal",
+    "text": "Mengelola akses user berbasis role"
+  },
+  {
+    "style": "Normal",
+    "text": "Fitur:"
+  },
+  {
+    "style": "Normal",
+    "text": "Register (mahasiswa)"
+  },
+  {
+    "style": "Normal",
+    "text": "Login / logout"
+  },
+  {
+    "style": "Normal",
+    "text": "Email verification"
+  },
+  {
+    "style": "Normal",
+    "text": "Role-based access:"
+  },
+  {
+    "style": "Normal",
+    "text": "Student"
+  },
+  {
+    "style": "Normal",
+    "text": "Instructor"
+  },
+  {
+    "style": "Normal",
+    "text": "Admin"
+  },
+  {
+    "style": "Normal",
+    "text": "Profile (nama, NIM/NIP)"
+  },
+  {
+    "style": "Normal",
+    "text": "📚 B. Learning Module (Materi)"
+  },
+  {
+    "style": "Normal",
+    "text": "Tujuan:"
+  },
+  {
+    "style": "Normal",
+    "text": "Distribusi materi pembelajaran bahasa"
+  },
+  {
+    "style": "Normal",
+    "text": "Fitur:"
+  },
+  {
+    "style": "Normal",
+    "text": "Upload materi:"
+  },
+  {
+    "style": "Normal",
+    "text": "PDF"
+  },
+  {
+    "style": "Normal",
+    "text": "Audio (listening)"
+  },
+  {
+    "style": "Normal",
+    "text": "Video"
+  },
+  {
+    "style": "Normal",
+    "text": "Kategorisasi:"
+  },
+  {
+    "style": "Normal",
+    "text": "Listening"
+  },
+  {
+    "style": "Normal",
+    "text": "Reading"
+  },
+  {
+    "style": "Normal",
+    "text": "Writing"
+  },
+  {
+    "style": "Normal",
+    "text": "Technical English (kimia/mesin)"
+  },
+  {
+    "style": "Normal",
+    "text": "Streaming audio langsung (tanpa download wajib)"
+  },
+  {
+    "style": "Normal",
+    "text": "🧠 C. Quiz / CBT System (CORE UTAMA)"
+  },
+  {
+    "style": "Normal",
+    "text": "Tujuan:"
+  },
+  {
+    "style": "Normal",
+    "text": "Evaluasi kemampuan mahasiswa"
+  },
+  {
+    "style": "Normal",
+    "text": "Fitur:"
+  },
+  {
+    "style": "Normal",
+    "text": "Tipe soal:"
+  },
+  {
+    "style": "Normal",
+    "text": "Multiple Choice"
+  },
+  {
+    "style": "Normal",
+    "text": "Essay"
+  },
+  {
+    "style": "Normal",
+    "text": "Matching (opsional fase 2)"
+  },
+  {
+    "style": "Normal",
+    "text": "Timer otomatis"
+  },
+  {
+    "style": "Normal",
+    "text": "Auto submit saat waktu habis"
+  },
+  {
+    "style": "Normal",
+    "text": "Auto grading (MCQ)"
+  },
+  {
+    "style": "Normal",
+    "text": "Score langsung tampil"
+  },
+  {
+    "style": "Normal",
+    "text": "🎧 D. Listening Test Module"
+  },
+  {
+    "style": "Normal",
+    "text": "Tujuan:"
+  },
+  {
+    "style": "Normal",
+    "text": "Fitur pembeda dari LMS biasa"
+  },
+  {
+    "style": "Normal",
+    "text": "Fitur:"
+  },
+  {
+    "style": "Normal",
+    "text": "Audio player terintegrasi"
+  },
+  {
+    "style": "Normal",
+    "text": "Soal muncul setelah audio"
+  },
+  {
+    "style": "Normal",
+    "text": "Audio hanya bisa diputar terbatas (opsional)"
+  },
+  {
+    "style": "Normal",
+    "text": "📊 E. Dashboard & Progress Tracking"
+  },
+  {
+    "style": "Normal",
+    "text": "Mahasiswa:"
+  },
+  {
+    "style": "Normal",
+    "text": "Progress belajar"
+  },
+  {
+    "style": "Normal",
+    "text": "Nilai quiz"
+  },
+  {
+    "style": "Normal",
+    "text": "Materi yang sudah dibuka"
+  },
+  {
+    "style": "Normal",
+    "text": "Dosen:"
+  },
+  {
+    "style": "Normal",
+    "text": "Nilai mahasiswa"
+  },
+  {
+    "style": "Normal",
+    "text": "Statistik kelas"
+  },
+  {
+    "style": "Normal",
+    "text": "Monitoring aktivitas"
+  },
+  {
+    "style": "Normal",
+    "text": "🏫 F. Lab Management"
+  },
+  {
+    "style": "Normal",
+    "text": "Fitur:"
+  },
+  {
+    "style": "Normal",
+    "text": "Presensi digital (QR / manual)"
+  },
+  {
+    "style": "Normal",
+    "text": "Jadwal lab"
+  },
+  {
+    "style": "Normal",
+    "text": "Booking sesi lab (opsional fase 2)"
+  },
+  {
+    "style": "Normal",
+    "text": "🛠️ G. Admin Panel"
+  },
+  {
+    "style": "Normal",
+    "text": "Fitur:"
+  },
+  {
+    "style": "Normal",
+    "text": "CRUD user"
+  },
+  {
+    "style": "Normal",
+    "text": "Assign role"
+  },
+  {
+    "style": "Normal",
+    "text": "Upload materi"
+  },
+  {
+    "style": "Normal",
+    "text": "Manage course"
+  },
+  {
+    "style": "Normal",
+    "text": "Monitoring sistem"
+  },
+  {
+    "style": "Normal",
+    "text": "🔄 2. App Flow (End-to-End)"
+  },
+  {
+    "style": "Normal",
+    "text": "Ini bagian paling penting untuk implementasi 👇"
+  },
+  {
+    "style": "Normal",
+    "text": "🧑‍🎓 A. Flow Mahasiswa"
+  },
+  {
+    "style": "Normal",
+    "text": "Register →\nLogin →\nDashboard →\nPilih Course →\nAkses Materi →\nKerjakan Quiz →\nSubmit →\nLihat Nilai →\nLanjut Materi Berikutnya"
+  },
+  {
+    "style": "Normal",
+    "text": "🔍 Detail Step-by-Step"
+  },
+  {
+    "style": "Normal",
+    "text": "1. Register"
+  },
+  {
+    "style": "Normal",
+    "text": "Input:"
+  },
+  {
+    "style": "Normal",
+    "text": "Nama"
+  },
+  {
+    "style": "Normal",
+    "text": "Email"
+  },
+  {
+    "style": "Normal",
+    "text": "Password"
+  },
+  {
+    "style": "Normal",
+    "text": "NIM"
+  },
+  {
+    "style": "Normal",
+    "text": "→ Supabase Auth create user\n→ Insert ke table users"
+  },
+  {
+    "style": "Normal",
+    "text": "2. Login"
+  },
+  {
+    "style": "Normal",
+    "text": "Supabase Auth"
+  },
+  {
+    "style": "Normal",
+    "text": "Ambil role dari DB"
+  },
+  {
+    "style": "Normal",
+    "text": "Redirect:"
+  },
+  {
+    "style": "Normal",
+    "text": "student → dashboard mahasiswa"
+  },
+  {
+    "style": "Normal",
+    "text": "3. Dashboard"
+  },
+  {
+    "style": "Normal",
+    "text": "Menampilkan:"
+  },
+  {
+    "style": "Normal",
+    "text": "Course aktif"
+  },
+  {
+    "style": "Normal",
+    "text": "Progress"
+  },
+  {
+    "style": "Normal",
+    "text": "Quiz pending"
+  },
+  {
+    "style": "Normal",
+    "text": "4. Learning Flow"
+  },
+  {
+    "style": "Normal",
+    "text": "Listening → Reading → Writing → Quiz"
+  },
+  {
+    "style": "Normal",
+    "text": "👉 Bisa dibuat:"
+  },
+  {
+    "style": "Normal",
+    "text": "locked system"
+  },
+  {
+    "style": "Normal",
+    "text": "Harus selesai step sebelumnya"
+  },
+  {
+    "style": "Normal",
+    "text": "5. Quiz Flow"
+  },
+  {
+    "style": "Normal",
+    "text": "Start Quiz →\nFetch soal →\nTimer jalan →\nUser jawab →\nSubmit →\nAuto grading →\nSave ke DB →\nTampilkan score"
+  },
+  {
+    "style": "Normal",
+    "text": "6. Progress Unlock"
+  },
+  {
+    "style": "Normal",
+    "text": "Jika nilai ≥ passing grade:"
+  },
+  {
+    "style": "Normal",
+    "text": "buka materi berikutnya"
+  },
+  {
+    "style": "Normal",
+    "text": "👨‍🏫 B. Flow Dosen"
+  },
+  {
+    "style": "Normal",
+    "text": "Login →\nDashboard →\nBuat Course →\nUpload Materi →\nBuat Quiz →\nMonitor Mahasiswa →\nLihat Nilai"
+  },
+  {
+    "style": "Normal",
+    "text": "Detail:"
+  },
+  {
+    "style": "Normal",
+    "text": "1. Create Course"
+  },
+  {
+    "style": "Normal",
+    "text": "Nama course"
+  },
+  {
+    "style": "Normal",
+    "text": "Deskripsi"
+  },
+  {
+    "style": "Normal",
+    "text": "2. Upload Materi"
+  },
+  {
+    "style": "Normal",
+    "text": "Upload ke Supabase Storage"
+  },
+  {
+    "style": "Normal",
+    "text": "Simpan URL ke DB"
+  },
+  {
+    "style": "Normal",
+    "text": "3. Create Quiz"
+  },
+  {
+    "style": "Normal",
+    "text": "Tambah soal"
+  },
+  {
+    "style": "Normal",
+    "text": "Set jawaban benar"
+  },
+  {
+    "style": "Normal",
+    "text": "Set durasi"
+  },
+  {
+    "style": "Normal",
+    "text": "4. Monitoring"
+  },
+  {
+    "style": "Normal",
+    "text": "Lihat:"
+  },
+  {
+    "style": "Normal",
+    "text": "siapa sudah submit"
+  },
+  {
+    "style": "Normal",
+    "text": "nilai rata-rata"
+  },
+  {
+    "style": "Normal",
+    "text": "👨‍💼 C. Flow Admin"
+  },
+  {
+    "style": "Normal",
+    "text": "Login →\nDashboard →\nManage User →\nAssign Role →\nMonitor System"
+  },
+  {
+    "style": "Normal",
+    "text": "🔁 3. System Flow (Backend Perspective)"
+  },
+  {
+    "style": "Normal",
+    "text": "[Frontend - Next.js]\n        ↓\n[Supabase Auth]\n        ↓\n[Database (Postgres)]\n        ↓\n[Storage (Audio/Video)]\n        ↓\n[Edge Function (Quiz Logic)]"
+  },
+  {
+    "style": "Normal",
+    "text": "⚡ 4. Critical Flow (WAJIB STABIL)"
+  },
+  {
+    "style": "Normal",
+    "text": "Ini yang paling penting untuk sukses MVP:"
+  },
+  {
+    "style": "Normal",
+    "text": "🔥 1. Login Flow"
+  },
+  {
+    "style": "Normal",
+    "text": "Harus cepat (<2 detik)"
+  },
+  {
+    "style": "Normal",
+    "text": "🔥 2. Quiz Flow"
+  },
+  {
+    "style": "Normal",
+    "text": "Tidak boleh:"
+  },
+  {
+    "style": "Normal",
+    "text": "crash"
+  },
+  {
+    "style": "Normal",
+    "text": "double submit"
+  },
+  {
+    "style": "Normal",
+    "text": "hilang jawaban"
+  },
+  {
+    "style": "Normal",
+    "text": "🔥 3. Audio Streaming"
+  },
+  {
+    "style": "Normal",
+    "text": "Tidak buffering di lab"
+  },
+  {
+    "style": "Normal",
+    "text": "🧠 5. UX Flow (Best Practice)"
+  },
+  {
+    "style": "Normal",
+    "text": "Mahasiswa:"
+  },
+  {
+    "style": "Normal",
+    "text": "Maks 3 klik ke quiz"
+  },
+  {
+    "style": "Normal",
+    "text": "Tidak ribet"
+  },
+  {
+    "style": "Normal",
+    "text": "Fokus ke pengerjaan"
+  },
+  {
+    "style": "Normal",
+    "text": "Dosen:"
+  },
+  {
+    "style": "Normal",
+    "text": "Upload materi < 1 menit"
+  },
+  {
+    "style": "Normal",
+    "text": "Buat quiz cepat"
+  },
+  {
+    "style": "Normal",
+    "text": "📌 6. MVP Scope (Yang HARUS kamu bangun dulu)"
+  },
+  {
+    "style": "Normal",
+    "text": "Kalau kamu mau realistis:"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ WAJIB:"
+  },
+  {
+    "style": "Normal",
+    "text": "Auth"
+  },
+  {
+    "style": "Normal",
+    "text": "Course"
+  },
+  {
+    "style": "Normal",
+    "text": "Materi (upload + view)"
+  },
+  {
+    "style": "Normal",
+    "text": "Quiz MCQ"
+  },
+  {
+    "style": "Normal",
+    "text": "Auto grading"
+  },
+  {
+    "style": "Normal",
+    "text": "❌ TUNDA:"
+  },
+  {
+    "style": "Normal",
+    "text": "Speaking AI"
+  },
+  {
+    "style": "Normal",
+    "text": "Anti-cheat kompleks"
+  },
+  {
+    "style": "Normal",
+    "text": "Booking lab"
+  },
+  {
+    "style": "Normal",
+    "text": "💡 Insight Penting"
+  },
+  {
+    "style": "Normal",
+    "text": "Portal ini bukan LMS biasa."
+  },
+  {
+    "style": "Normal",
+    "text": "👉 Nilai jual utama kamu:"
+  },
+  {
+    "style": "Normal",
+    "text": "Listening module"
+  },
+  {
+    "style": "Normal",
+    "text": "CBT stabil"
+  },
+  {
+    "style": "Normal",
+    "text": "Simple & cepat dipakai di lab"
+  },
+  {
+    "style": "Normal",
+    "text": "🧱 ERD Diagram (Visual)"
+  },
+  {
+    "style": "Normal",
+    "text": "┌──────────────┐\n│    users     │\n├──────────────┤\n│ id (uuid) PK │\n│ name         │\n│ email        │\n│ nim_nip      │\n│ role         │\n│ created_at   │\n└──────┬───────┘\n       │\n       │ 1\n       │\n       │ *\n┌──────▼────────┐\n│   courses     │\n├───────────────┤\n│ id (uuid) PK  │\n│ title         │\n│ description   │\n│ instructor_id │ FK → users.id\n└──────┬────────┘\n       │\n       │ 1\n       │\n       │ *\n┌──────▼────────────┐\n│    materials      │\n├───────────────────┤\n│ id (uuid) PK      │\n│ course_id         │ FK → courses.id\n│ title             │\n│ type              │ (pdf/audio/video)\n│ file_url          │\n│ created_at        │\n└───────────────────┘\n\n\n┌──────────────────┐\n│     quizzes      │\n├──────────────────┤\n│ id (uuid) PK     │\n│ course_id        │ FK → courses.id\n│ title            │\n│ duration         │\n│ created_at       │\n└──────┬───────────┘\n       │\n       │ 1\n       │\n       │ *\n┌──────▼────────────┐\n│    questions      │\n├───────────────────┤\n│ id (uuid) PK      │\n│ quiz_id           │ FK → quizzes.id\n│ type              │ (mcq/essay)\n│ question_text     │\n└──────┬────────────┘\n       │\n       │ 1\n       │\n       │ *\n┌──────▼────────────┐\n│     answers       │\n├───────────────────┤\n│ id (uuid) PK      │\n│ question_id       │ FK → questions.id\n│ answer_text       │\n│ is_correct        │\n└───────────────────┘\n\n\n┌────────────────────┐\n│   submissions      │\n├────────────────────┤\n│ id (uuid) PK       │\n│ quiz_id            │ FK → quizzes.id\n│ student_id         │ FK → users.id\n│ score              │\n│ submitted_at       │\n└──────┬─────────────┘\n       │\n       │ 1\n       │\n       │ *\n┌──────▼────────────┐\n│ submission_answers│\n├───────────────────┤\n│ id (uuid) PK      │\n│ submission_id     │ FK → submissions.id\n│ question_id       │ FK → questions.id\n│ answer_id         │ FK → answers.id (nullable utk essay)\n│ answer_text       │ (essay)\n└───────────────────┘\n\n\n┌──────────────────┐\n│   attendance     │\n├──────────────────┤\n│ id (uuid) PK     │\n│ student_id       │ FK → users.id\n│ timestamp        │\n│ method           │ (qr/manual)\n└──────────────────┘"
+  },
+  {
+    "style": "Normal",
+    "text": "🔗 Relasi Utama (Simple View)"
+  },
+  {
+    "style": "Normal",
+    "text": "users → courses"
+  },
+  {
+    "style": "Normal",
+    "text": "1 dosen bisa punya banyak course"
+  },
+  {
+    "style": "Normal",
+    "text": "courses → materials"
+  },
+  {
+    "style": "Normal",
+    "text": "1 course banyak materi"
+  },
+  {
+    "style": "Normal",
+    "text": "courses → quizzes"
+  },
+  {
+    "style": "Normal",
+    "text": "1 course banyak quiz"
+  },
+  {
+    "style": "Normal",
+    "text": "quizzes → questions → answers"
+  },
+  {
+    "style": "Normal",
+    "text": "Struktur CBT"
+  },
+  {
+    "style": "Normal",
+    "text": "users (student) → submissions"
+  },
+  {
+    "style": "Normal",
+    "text": "Mahasiswa mengerjakan quiz"
+  },
+  {
+    "style": "Normal",
+    "text": "submissions → submission_answers"
+  },
+  {
+    "style": "Normal",
+    "text": "Detail jawaban per soal"
+  },
+  {
+    "style": "Normal",
+    "text": "users → attendance"
+  },
+  {
+    "style": "Normal",
+    "text": "Presensi mahasiswa"
+  },
+  {
+    "style": "Normal",
+    "text": "🧠 Insight Desain (Kenapa seperti ini)"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ 1. submission_answers dipisah"
+  },
+  {
+    "style": "Normal",
+    "text": "👉 Ini penting banget"
+  },
+  {
+    "style": "Normal",
+    "text": "Supaya:"
+  },
+  {
+    "style": "Normal",
+    "text": "Bisa tracking jawaban detail"
+  },
+  {
+    "style": "Normal",
+    "text": "Bisa review ulang"
+  },
+  {
+    "style": "Normal",
+    "text": "Bisa analytics soal"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ 2. answers nullable di essay"
+  },
+  {
+    "style": "Normal",
+    "text": "MCQ → pakai answer_id"
+  },
+  {
+    "style": "Normal",
+    "text": "Essay → pakai answer_text"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ 3. Role tidak dipisah tabel"
+  },
+  {
+    "style": "Normal",
+    "text": "Lebih simpel:"
+  },
+  {
+    "style": "Normal",
+    "text": "role = student | instructor | admin"
+  },
+  {
+    "style": "Normal",
+    "text": "⚡ Versi MVP (Simplified ERD)"
+  },
+  {
+    "style": "Normal",
+    "text": "Kalau mau lebih cepat launch:"
+  },
+  {
+    "style": "Normal",
+    "text": "Hapus dulu:"
+  },
+  {
+    "style": "Normal",
+    "text": "attendance"
+  },
+  {
+    "style": "Normal",
+    "text": "submission_answers (opsional)"
+  },
+  {
+    "style": "Normal",
+    "text": "Gunakan:"
+  },
+  {
+    "style": "Normal",
+    "text": "hanya score final"
+  },
+  {
+    "style": "Normal",
+    "text": "🔐 Siap untuk Supabase"
+  },
+  {
+    "style": "Normal",
+    "text": "ERD ini sudah:"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ Compatible dengan PostgreSQL"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ Siap pakai RLS"
+  },
+  {
+    "style": "Normal",
+    "text": "✅ Mudah scaling"
+  },
+  {
+    "style": "Normal",
+    "text": "👉 Next Step (Highly Recommended)"
+  },
+  {
+    "style": "Normal",
+    "text": "Kalau kamu serius mau lanjut build:"
+  },
+  {
+    "style": "Normal",
+    "text": "Aku bisa bantu langsung:"
+  },
+  {
+    "style": "Normal",
+    "text": "🔧 1. Generate SQL lengkap"
+  },
+  {
+    "style": "Normal",
+    "text": "CREATE TABLE"
+  },
+  {
+    "style": "Normal",
+    "text": "FK"
+  },
+  {
+    "style": "Normal",
+    "text": "Index"
+  },
+  {
+    "style": "Normal",
+    "text": "Constraint"
+  },
+  {
+    "style": "Normal",
+    "text": "🔐 2. RLS Policy (Super penting)"
+  },
+  {
+    "style": "Normal",
+    "text": "Student hanya lihat datanya"
+  },
+  {
+    "style": "Normal",
+    "text": "Dosen hanya lihat course-nya"
+  },
+  {
+    "style": "Normal",
+    "text": "⚛️ 3. Integrasi ke Next.js"
+  },
+  {
+    "style": "Normal",
+    "text": "Query real"
+  },
+  {
+    "style": "Normal",
+    "text": "Supabase client"
+  }
+]

@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.material-symbols-outlined.filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+@layer base {
+  :root {
+    --primary: #004085;
+    --primary-container: #1d57a7;
+    --primary-fixed: #d7e2ff;
+    --primary-fixed-dim: #abc7ff;
+    --on-primary: #ffffff;
+    --secondary: #48626e;
+    --secondary-container: #cbe7f5;
+    --secondary-fixed: #cbe7f5;
+    --tertiary: #722b00;
+    --tertiary-fixed: #ffdbcc;
+    --error: #ba1a1a;
+    --error-container: #ffdad6;
+    --surface: #f8f9fa;
+    --surface-container-lowest: #ffffff;
+    --surface-container-low: #f3f4f5;
+    --surface-container: #edeeef;
+    --surface-bright: #f8f9fa;
+    --on-surface: #191c1d;
+    --on-surface-variant: #424752;
+    --outline: #727784;
+    --outline-variant: #c2c6d4;
+
+    /* Custom Stitch Shadows */
+    --shadow-whisper: 0px 12px 32px rgba(25, 28, 29, 0.04);
+    --shadow-soft: 0px 4px 12px rgba(0, 0, 0, 0.02);
+  }
+}
+
+@layer base {
+  body {
+    font-family: var(--font-inter), sans-serif;
+    background: var(--surface);
+    color: var(--on-surface);
+    @apply antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-manrope), sans-serif;
+    font-weight: 800;
+    @apply tracking-tight;
+  }
+}
+
+.font-headline { font-family: var(--font-manrope), sans-serif; }
+.font-body { font-family: var(--font-inter), sans-serif; }
+
+/* Custom Utilities for Stitch Aura */
+.whisper-shadow {
+  box-shadow: var(--shadow-whisper);
+}
+
+.soft-shadow {
+  box-shadow: var(--shadow-soft);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#cbe7f5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "on-surface-variant": "#424752",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary-container": "#983c00",
+                        "on-secondary-container": "#4e6874",
+                        "surface-container": "#edeeef",
+                        "primary-fixed": "#d7e2ff",
+                        "secondary-fixed-dim": "#afcbd8",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#722b00",
+                        "surface-dim": "#d9dadb",
+                        "on-tertiary-fixed": "#351000",
+                        "tertiary-fixed": "#ffdbcc",
+                        "secondary": "#48626e",
+                        "inverse-primary": "#abc7ff",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-fixed": "#001b3f",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "on-primary-container": "#bad0ff",
+                        "outline-variant": "#c2c6d4",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "outline": "#727784",
+                        "surface-variant": "#e1e3e4",
+                        "primary": "#004085",
+                        "on-tertiary-container": "#ffc2a7",
+                        "secondary-container": "#cbe7f5",
+                        "on-background": "#191c1d",
+                        "primary-container": "#1d57a7",
+                        "on-surface": "#191c1d",
+                        "on-secondary-fixed-variant": "#304a55",
+                        "on-secondary-fixed": "#021f29",
+                        "on-primary-fixed-variant": "#00458f",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface": "#f8f9fa",
+                        "background": "#f8f9fa",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#abc7ff",
+                        "surface-tint": "#255dad"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .atmospheric-gradient {
+            background: linear-gradient(135deg, #004085 0%, #1d57a7 100%);
+        }
+        .whisper-shadow {
+            box-shadow: 0px 12px 32px rgba(25, 28, 29, 0.04);
+        }
+        .glass-nav {
+            background: rgba(248, 249, 250, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 glass-nav flex justify-between items-center px-8 py-3 h-[64px]">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-blue-950">Portal Bahasa</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-headline font-medium tracking-tight text-blue-700 border-b-2 border-blue-700 pb-1" href="#">Dashboard</a>
+<a class="font-headline font-medium tracking-tight text-slate-500 hover:text-blue-900 transition-colors" href="#">Analytics</a>
+<a class="font-headline font-medium tracking-tight text-slate-500 hover:text-blue-900 transition-colors" href="#">Reports</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-100 rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<button class="p-2 hover:bg-slate-100 rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">help_outline</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container ml-2">
+<img alt="Administrator profile photo" class="w-full h-full object-cover" data-alt="close-up portrait of a professional student with a kind expression in a bright academic setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDINHx5uzQpcPUHuNmZfe0mjqueaBcOAwaKqeahxEI2ObPALSRGM8VvohgVyYDwPV08Byf2PmNFnbUL1HT51nAEISelQfzCej6SEpslu7jvRnghrbO9N3ps6x431C_gLLl7tdG9MBcqW83CrZUjLQ3F-zx_ODY3F6bTIq4ax0dA5uTw4KL-83b2595q0idOwJUruGNHqbWI5Jp_t4NNPShczcLWatCbdtaY0meZTygaQTiLMVqkkHrGbxDStsvEIzG_N6ONkPbYC0Z3"/>
+</div>
+</div>
+</nav>
+<!-- Side Navigation Bar -->
+<aside class="hidden lg:flex flex-col h-screen w-64 fixed left-0 top-0 bg-slate-100 pt-20 p-4 gap-2">
+<div class="px-4 mb-6">
+<h2 class="text-lg font-black text-blue-900 font-headline uppercase tracking-widest text-[10px] opacity-60">Admin Console</h2>
+<p class="text-xs font-semibold text-blue-800 opacity-80">Instructor Access</p>
+</div>
+<nav class="flex-grow flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:translate-x-1 transition-all duration-200 font-semibold text-sm rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>User Directory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:translate-x-1 transition-all duration-200 font-semibold text-sm rounded-lg" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span>Course Catalog</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:translate-x-1 transition-all duration-200 font-semibold text-sm rounded-lg" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span>Quiz Architect</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-blue-900 bg-white font-bold rounded-lg whisper-shadow" href="#">
+<span class="material-symbols-outlined">school</span>
+<span>Academic Records</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-200/50 hover:translate-x-1 transition-all duration-200 font-semibold text-sm rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-slate-200 pt-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 hover:bg-slate-200/50 transition-all font-semibold text-xs" href="#">
+<span class="material-symbols-outlined text-lg">contact_support</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-red-600 hover:bg-red-50 transition-all font-semibold text-xs" href="#">
+<span class="material-symbols-outlined text-lg">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-20 pb-12 px-8 min-h-screen">
+<!-- Page Header & Identity -->
+<header class="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+<div class="flex items-center gap-8">
+<div class="relative">
+<div class="w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-primary to-secondary-fixed">
+<div class="w-full h-full rounded-full overflow-hidden border-4 border-white">
+<img alt="Student Portrait" class="w-full h-full object-cover" data-alt="studio portrait of a smiling male student with glasses in a professional white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyHcP8XMIGYPv56VCztz4Vw6noKRWZU24uxS0trTpD0LdJPspQ7-FrIn2H7aheGrx3Adze3E0bCFjxHuPkcbxoKz6dI0B9IaksDMyYNgKp_BgE7tRmD4RtsaipZlYZxVxLnycFYkz0sguOQSFdNkjfHjLoFzcw1vdcVYtmmPiTQT0FZu6yLaFgFh6OayvehoYK7bpAeh6wNnf89FNkELLemZg-nksQtZmjnOa_pNxxPmZyNIdxQyq3Dg2qku-VU2b5frZfnlr1SfPy"/>
+</div>
+</div>
+<button class="absolute bottom-0 right-0 atmospheric-gradient text-white p-2 rounded-full shadow-lg">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div>
+<h1 class="text-4xl font-headline font-extrabold text-on-surface tracking-tight leading-none mb-2">Adrian Wijaya</h1>
+<div class="flex flex-col gap-1">
+<p class="text-on-surface-variant font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">badge</span>
+                            NIM: 2024098112
+                        </p>
+<p class="text-on-surface-variant font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">mail</span>
+                            adrian.wijaya@student.portalbahasa.id
+                        </p>
+</div>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface-container-high text-on-surface px-6 py-2.5 rounded-xl font-semibold text-sm hover:bg-slate-200 transition-colors">
+                    Export Transcript
+                </button>
+<button class="atmospheric-gradient text-white px-8 py-2.5 rounded-xl font-semibold text-sm hover:opacity-90 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">workspace_premium</span>
+                    Generate Certificate
+                </button>
+</div>
+</header>
+<!-- Tabbed Navigation -->
+<div class="mb-8 flex gap-8 border-b-0">
+<button class="text-blue-900 border-b-2 border-blue-900 pb-4 font-headline font-bold text-sm tracking-wide">ENROLLED COURSES</button>
+<button class="text-slate-500 hover:text-blue-900 pb-4 font-headline font-semibold text-sm tracking-wide transition-colors">LEARNING HISTORY</button>
+<button class="text-slate-500 hover:text-blue-900 pb-4 font-headline font-semibold text-sm tracking-wide transition-colors">ACCOUNT SETTINGS</button>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Left Column: Progress & Stats -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<!-- Learning Progress Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 whisper-shadow">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline font-bold text-on-surface">Overall Progress</h3>
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div class="relative w-48 h-48 mx-auto mb-6 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-slate-100" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-dasharray="552.92" stroke-dashoffset="121.64" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-5xl font-headline font-extrabold text-blue-950">78%</span>
+<span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Complete</span>
+</div>
+</div>
+<p class="text-center text-sm text-on-surface-variant leading-relaxed">
+                        You've completed <span class="font-bold text-on-surface">14 of 18</span> modules. Keep it up, you're ahead of the class!
+                    </p>
+</div>
+<!-- Average Score Card -->
+<div class="bg-surface-container-low rounded-xl p-8">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline font-bold text-on-surface">Average Score</h3>
+<span class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-full">TOP 10%</span>
+</div>
+<div class="flex items-baseline gap-2 mb-2">
+<span class="text-4xl font-headline font-black text-blue-950">92.4</span>
+<span class="text-slate-400 font-bold">/ 100</span>
+</div>
+<div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[92.4%]"></div>
+</div>
+</div>
+</div>
+<!-- Right Column: Courses & Achievements -->
+<div class="col-span-12 lg:col-span-8 flex flex-col gap-6">
+<!-- Enrolled Courses Asymmetric Grid -->
+<section>
+<div class="flex justify-between items-end mb-6">
+<h2 class="text-2xl font-headline font-bold text-on-surface">Enrolled Courses</h2>
+<a class="text-primary text-sm font-bold flex items-center gap-1" href="#">View All <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Course Card 1 -->
+<div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden whisper-shadow border-none">
+<div class="h-32 bg-slate-200">
+<img alt="German Course" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="stylized aesthetic photo of a modern library in Berlin with students reading and soft light coming through windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuEWa-xjGqr9lORPbnxPqx3DXznqeQLGZJ0G7TxE_ZcVTh7dmXh6zp-Gyr8-EUvHI5cQ8oxGBSyzbBBtPld1QzkzlnPPN93_yfkLu8J4XPkoztMxvfuC9GNdzxNXJy9HB1-dgk8Bln5EMjs8pvVv_fmSaQXjDdDapWqQ1qlk2Jm4q1iRf7q-_lDEXNjAC8kn-DJMfbHOx1EuAUzalhuEDwByGWiumEjZHWvCts4UFCDu2X-PN8Lf1eo-r_wHuX25pZ3saimC-76CP7"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full uppercase tracking-tighter">German Level B2</span>
+<span class="material-symbols-outlined text-slate-300">more_vert</span>
+</div>
+<h4 class="font-headline font-extrabold text-lg text-blue-950 mb-4">Advanced Grammatical Structures</h4>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-white overflow-hidden bg-slate-100">
+<img alt="Student" data-alt="close up avatar photo of a professional male instructor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv5JmAidprhM8yQEDSKKgCzYelnYDhaIS5rpiBrTh8BghbBG3-iqVxcDtniyGU7q8tL-nThdPOau2ZsCaim5EhjD5spZ3VDdVKS299e3KtR7pcbkNjXRdzkHTjvAbDWccD9ZJPF0QFsxKRghd18-VggQrz0yOcKYcqbt7BmKV1a3WOrMWBLP9yjJ3bPzEykI93d5StW8wxe_V4xM4XZguHT-lpD9FB485Bo9t4hMk4-kbCVQpi3_5JksKGFPHV2i5itvETLJNnT5kw"/>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-white overflow-hidden bg-slate-100">
+<img alt="Student" data-alt="close up avatar photo of a professional female instructor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbauW9da0nZ_S_K0v6oEpPI5tJ0hiZoevWPDID0slZNfZyytfbrhe00v0uOcKckfmnKtQPRIldZ52xERBnEhYL4H1rfxEDWIJsYmMi-PwBQGVScatKEXiUej26saVlpZXJmiBjxMuEZIaOG9US7bjTta2WSBV0ScX4amsXxHxNHTVA3aQ7UNU7Dk9j190H3XOsDzN8LYnUNu5UMtpNTN64E1CJ3KoaEkpodcvy2VuzA0LgGffuWNbvP3u238UUK7sN8722pnfeZD8W"/>
+</div>
+<div class="w-6 h-6 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-[8px] font-bold">+12</div>
+</div>
+<span class="text-xs font-bold text-primary">85% Complete</span>
+</div>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="group relative bg-surface-container-lowest rounded-xl overflow-hidden whisper-shadow">
+<div class="h-32 bg-slate-200">
+<img alt="City View" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="dramatic wide angle shot of a modern city skyline at night with streaks of light from traffic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu9sbs3_-iYgb3MFeuuqauH4NaHM9-XWYj6GuiUBStHuaf8opIAfLTmZxL_aHlVgZTQXGhPJrIGcsnJqq2Z-A9S2vOsPHgwUva3WebZX688Al9fd5W3dCnkXJ9o83UyJ-VmP-ftHJMdu1OvwyRnS8n9eOMGdfVpwrm71SLJXpGOHbjnL6lfxCDEMceNO0bqBx9v0txeNQWvucwqJjQ0DXulE15p5mrTgvfX1eT2CSCU39k2gYx-pXGWpn0-O1zGfXcijI9QIJ2Aiha"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold rounded-full uppercase tracking-tighter">Academic Writing</span>
+<span class="material-symbols-outlined text-slate-300">more_vert</span>
+</div>
+<h4 class="font-headline font-extrabold text-lg text-blue-950 mb-4">Research Paper Methodology</h4>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-white overflow-hidden bg-slate-100">
+<img alt="Student" data-alt="avatar of a young male student in profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK2czZo4hOYwg_HK2k1m0UTrNrEx0atO49ayrVr-EaTQtypBl1LPIHMDqlTVkTgJC7jnVBzUX3HJE8mF-TmyaRt-rEg1kYxOTU37bL-K3_Prt8hHXdOqMZ2j2r0T5AK2hIY8utZnxO6UiXwI5siudnCbTBx9NeSBy9RhaF6JCjA0SEzp0rN7x_5Lb31xvh2PRq4cduaqXiJhbHWZ1zRBcya8s5t9-eZY2gnkvqp2SOSZv7egByCZrcjvGNHwDmhnCpM6ZiBFa4Trq5"/>
+</div>
+<div class="w-6 h-6 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-[8px] font-bold">+4</div>
+</div>
+<span class="text-xs font-bold text-slate-400">Not Started</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Certificate of Achievement Section -->
+<section>
+<h2 class="text-2xl font-headline font-bold text-on-surface mb-6">Certificates of Achievement</h2>
+<div class="flex flex-col gap-4">
+<!-- Certificate List Item -->
+<div class="bg-surface-container-lowest rounded-xl p-6 flex items-center gap-6 group hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100">
+<div class="w-16 h-16 atmospheric-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-white text-3xl">verified</span>
+</div>
+<div class="flex-grow">
+<h5 class="font-headline font-extrabold text-blue-950">Foundational Linguistics &amp; Phonetics</h5>
+<p class="text-xs font-medium text-slate-500 mt-1">Completed: December 14, 2023 • Grade: High Distinction</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+<!-- Certificate List Item -->
+<div class="bg-surface-container-lowest rounded-xl p-6 flex items-center gap-6 group hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100">
+<div class="w-16 h-16 atmospheric-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-white text-3xl">verified</span>
+</div>
+<div class="flex-grow">
+<h5 class="font-headline font-extrabold text-blue-950">Indonesian Business Communication</h5>
+<p class="text-xs font-medium text-slate-500 mt-1">Completed: October 02, 2023 • Grade: Distinction</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Mobile Navigation -->
+<div class="md:hidden fixed bottom-0 left-0 w-full glass-nav flex justify-around items-center py-3 border-t-0 shadow-[0_-1px_12px_rgba(0,0,0,0.05)] z-50">
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[10px] font-bold">Courses</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold">Account</span>
+</button>
+</div>
+</body></html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Management | Portal Bahasa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .whisper-shadow {
+            box-shadow: 0px 12px 32px rgba(25, 28, 29, 0.04);
+        }
+        .atmospheric-gradient {
+            background: linear-gradient(135deg, #004085 0%, #1d57a7 100%);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, .font-headline {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#cbe7f5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "on-surface-variant": "#424752",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary-container": "#983c00",
+                        "on-secondary-container": "#4e6874",
+                        "surface-container": "#edeeef",
+                        "primary-fixed": "#d7e2ff",
+                        "secondary-fixed-dim": "#afcbd8",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#722b00",
+                        "surface-dim": "#d9dadb",
+                        "on-tertiary-fixed": "#351000",
+                        "tertiary-fixed": "#ffdbcc",
+                        "secondary": "#48626e",
+                        "inverse-primary": "#abc7ff",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-fixed": "#001b3f",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "on-primary-container": "#bad0ff",
+                        "outline-variant": "#c2c6d4",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "outline": "#727784",
+                        "surface-variant": "#e1e3e4",
+                        "primary": "#004085",
+                        "on-tertiary-container": "#ffc2a7",
+                        "secondary-container": "#cbe7f5",
+                        "on-background": "#191c1d",
+                        "primary-container": "#1d57a7",
+                        "on-surface": "#191c1d",
+                        "on-secondary-fixed-variant": "#304a55",
+                        "on-secondary-fixed": "#021f29",
+                        "on-primary-fixed-variant": "#00458f",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface": "#f8f9fa",
+                        "background": "#f8f9fa",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#abc7ff",
+                        "surface-tint": "#255dad"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-fixed">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-lg flex justify-between items-center px-8 py-3">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-blue-950 dark:text-white">Portal Bahasa</span>
+<nav class="hidden md:flex items-center gap-6 font-manrope font-medium tracking-tight">
+<a class="text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1" href="#">Dashboard</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-900 dark:hover:text-blue-100 transition-colors" href="#">Analytics</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-900 dark:hover:text-blue-100 transition-colors" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">help_outline</button>
+<div class="h-8 w-8 rounded-full overflow-hidden bg-slate-200">
+<img alt="Administrator profile photo" class="h-full w-full object-cover" data-alt="professional portrait of a university administrator in a modern office with soft natural lighting and neutral colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIY82raP3fVDIHBFLCYRW5wN_e400DvDtDbph-KfgKXdnidt7h6j4r_bUqpeDDiIUAFW4sD6f56q69FNVhRFX1SQ8c1TjXytuhJ1Irydg5C-R-6OoVLmA9jOV7dT6M_kKRHW0SM73JCiJmx1dtMqOyu5nbk92JPAPXd6mRLxjvaKrSpi--lgJynw_X6wRgi57t4-ifrzcECbQ2-47TS2aPMJMYO8tYfpTrmL3Vm28Jr9wyU-ZhzhCASjQ3IJEV8aJgX9n9WeErhzFU"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-100 dark:bg-slate-950 flex flex-col p-4 gap-2 pt-20">
+<div class="mb-6 px-2">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 atmospheric-gradient rounded-xl flex items-center justify-center text-white">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div>
+<h2 class="text-lg font-black text-blue-900 dark:text-blue-200 leading-none">Admin Console</h2>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mt-1">Instructor Access</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1 font-manrope text-sm font-semibold">
+<a class="flex items-center gap-3 px-3 py-2 text-blue-900 dark:text-blue-100 bg-white dark:bg-slate-900 font-bold rounded-lg shadow-sm" href="#">
+<span class="material-symbols-outlined">group</span>
+                User Directory
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-900/50 hover:translate-x-1 transition-transform duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">library_books</span>
+                Course Catalog
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-900/50 hover:translate-x-1 transition-transform duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">quiz</span>
+                Quiz Architect
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-900/50 hover:translate-x-1 transition-transform duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">school</span>
+                Academic Records
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-900/50 hover:translate-x-1 transition-transform duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto flex flex-col gap-1 border-t border-slate-200 dark:border-slate-800 pt-4">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:text-blue-900 transition-colors" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-error hover:opacity-80 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="pl-64 pt-20 min-h-screen">
+<div class="p-8 max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-10">
+<div>
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">User Directory</h1>
+<p class="text-on-surface-variant font-body">Manage permissions and oversee academic identities across the portal.</p>
+</div>
+<button class="atmospheric-gradient text-white px-6 py-2.5 rounded-xl font-manrope font-bold flex items-center gap-2 whisper-shadow hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span>
+                    Add New User
+                </button>
+</div>
+<!-- Dashboard Stats Overlay (Editorial Look) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+<div class="bg-surface-container-lowest p-6 rounded-xl whisper-shadow">
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">Total Scholars</p>
+<p class="text-3xl font-headline font-extrabold text-primary">1,284</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl whisper-shadow">
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">Instructors</p>
+<p class="text-3xl font-headline font-extrabold text-on-surface">42</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl whisper-shadow border-l-4 border-tertiary">
+<p class="text-xs font-bold uppercase tracking-widest text-tertiary mb-1">Pending Approval</p>
+<p class="text-3xl font-headline font-extrabold text-tertiary">15</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl whisper-shadow">
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">System Health</p>
+<p class="text-3xl font-headline font-extrabold text-on-surface">99.8%</p>
+</div>
+</div>
+<!-- Filters & Table Container -->
+<div class="bg-surface-container-lowest rounded-xl whisper-shadow overflow-hidden">
+<!-- Table Filters -->
+<div class="p-6 bg-surface-container-low flex flex-col md:flex-row gap-4 items-center justify-between">
+<div class="flex items-center gap-3 w-full md:w-auto">
+<div class="relative flex-1 md:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+<input class="w-full bg-surface-bright border-none ring-1 ring-outline-variant/30 rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary transition-all" placeholder="Search by name, email or NIP..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<select class="bg-surface-bright border-none ring-1 ring-outline-variant/30 rounded-lg px-3 py-2 text-sm font-medium focus:ring-2 focus:ring-primary">
+<option>All Roles</option>
+<option>Student</option>
+<option>Instructor</option>
+<option>Admin</option>
+</select>
+<select class="bg-surface-bright border-none ring-1 ring-outline-variant/30 rounded-lg px-3 py-2 text-sm font-medium focus:ring-2 focus:ring-primary">
+<option>Status</option>
+<option>Verified</option>
+<option>Pending</option>
+</select>
+</div>
+</div>
+<div class="text-xs font-medium text-on-surface-variant">
+                        Showing <span class="text-on-surface font-bold">1-10</span> of 1,284
+                    </div>
+</div>
+<!-- Academic Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-headline text-xs uppercase tracking-widest">
+<th class="px-6 py-4 font-extrabold">Name &amp; Profile</th>
+<th class="px-6 py-4 font-extrabold">Contact</th>
+<th class="px-6 py-4 font-extrabold">ID (NIM/NIP)</th>
+<th class="px-6 py-4 font-extrabold">Institutional Role</th>
+<th class="px-6 py-4 font-extrabold">Status</th>
+<th class="px-6 py-4 font-extrabold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant/30">
+<!-- User Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full overflow-hidden ring-2 ring-surface-container">
+<img alt="Student profile" class="h-full w-full object-cover" data-alt="close-up of a diverse young university student smiling with a soft academic background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKdFpOtLdhm5KigQFPNS4n4iF4u8vwRnktDkqOTcw9s8Q_OoMpkOi8VzPipaduj4AACzwlw9iPYAaYpVSSW_PmimD6gMuBemuBGXmJQSxp-eYaiPWfnIxQiXj0oM-o8yfnC3VhV8Ig5IgAXtVyB7Zdy-vPuaHKCGfnKsYEdu_TZ_npiPeQqE-D6tCsJVAfR0miY7_4re7hmCG1yOOBlPNExfP0zXTr0NXl6hf_Y2PouZvkemxLM4nBDdx0pHmMImjuck3Z2Jv6p3nd"/>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface">Adrian Prasetya</p>
+<p class="text-xs text-on-surface-variant">Linguistics Department</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-on-surface-variant">adrian.p@university.edu</p>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-mono text-on-surface">190204102</p>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1 px-3 py-1 bg-secondary-container text-on-secondary-fixed-variant rounded-full text-xs font-bold">
+<span class="material-symbols-outlined text-[14px]">school</span> Student
+                                    </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-xs font-bold text-on-tertiary-fixed-variant">
+<span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span> Verified
+                                    </div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-surface-container rounded-lg transition-colors text-outline" title="Edit">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-lg transition-colors text-outline" title="Change Role">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+</button>
+<button class="p-2 hover:bg-error-container/20 hover:text-error rounded-lg transition-colors text-outline" title="Delete">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- User Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full overflow-hidden ring-2 ring-surface-container">
+<img alt="Instructor profile" class="h-full w-full object-cover" data-alt="professional portrait of a middle-aged female professor in a library setting with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6aoX7Gg3_ghuLaOLwZEcqlowl-dMwg4-JEzs9YnFyiR96lWEgbyqgmz5ToNgfKWkP1sAGXwj2yxkf2owTxEv_68U_Wawsuyv5FTa66TE0mzNNcoO3JgT-fasL68EIu_lrrxW-4VkL9M9akhaPEb-LEWplZTNiY6HItWlZvYD3wmAeKNEqYWUL4jCSKd4GsSqBkCNEOxP6gA2sGsYyBNYkh7eLnqBNm97RgMUpOEXnA8JTH9PpuZRM0CGMcUgANThNrs03HebR3Fnf"/>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface">Dr. Elena Rodriguez</p>
+<p class="text-xs text-on-surface-variant">Faculty of Letters</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-on-surface-variant">e.rodriguez@faculty.edu</p>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-mono text-on-surface">NIP8829103</p>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1 px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full text-xs font-bold">
+<span class="material-symbols-outlined text-[14px]">psychology</span> Instructor
+                                    </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-xs font-bold text-on-tertiary-fixed-variant">
+<span class="h-2 w-2 rounded-full bg-primary"></span> Verified
+                                    </div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-surface-container rounded-lg transition-colors text-outline" title="Edit">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-lg transition-colors text-outline" title="Change Role">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+</button>
+<button class="p-2 hover:bg-error-container/20 hover:text-error rounded-lg transition-colors text-outline" title="Delete">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- User Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full overflow-hidden ring-2 ring-surface-container">
+<div class="h-full w-full bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">person</span>
+</div>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface italic">Awaiting Identity...</p>
+<p class="text-xs text-on-surface-variant">Unassigned Department</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm text-on-surface-variant">new.scholar@temp.com</p>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-mono text-on-surface-variant">---</p>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1 px-3 py-1 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-bold">
+<span class="material-symbols-outlined text-[14px]">pending</span> Student
+                                    </span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-xs font-bold text-tertiary">
+<span class="h-2 w-2 rounded-full bg-tertiary"></span> Pending
+                                    </div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="px-3 py-1.5 bg-primary text-on-primary text-xs font-bold rounded-lg hover:bg-primary-container transition-colors">Approve</button>
+<button class="p-2 hover:bg-error-container/20 hover:text-error rounded-lg transition-colors text-outline" title="Delete">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-6 border-t border-surface-variant/30 flex items-center justify-between">
+<button class="px-4 py-2 text-sm font-bold text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">chevron_left</span> Previous
+                    </button>
+<div class="flex items-center gap-1">
+<button class="h-8 w-8 rounded-lg bg-primary text-on-primary text-sm font-bold">1</button>
+<button class="h-8 w-8 rounded-lg hover:bg-surface-container text-on-surface text-sm font-bold">2</button>
+<button class="h-8 w-8 rounded-lg hover:bg-surface-container text-on-surface text-sm font-bold">3</button>
+<span class="px-2 text-outline">...</span>
+<button class="h-8 w-8 rounded-lg hover:bg-surface-container text-on-surface text-sm font-bold">128</button>
+</div>
+<button class="px-4 py-2 text-sm font-bold text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors flex items-center gap-2">
+                        Next <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Contextual Insight (Bento Element) -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 bg-primary-container/10 p-8 rounded-xl border border-primary/5 relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="text-xl font-extrabold text-primary mb-2">User Verification Trends</h3>
+<p class="text-sm text-on-surface-variant max-w-lg mb-6">Verification rates have increased by 12% this semester following the implementation of the new academic SSO portal.</p>
+<div class="flex items-end gap-2 h-24">
+<div class="w-full bg-primary/20 rounded-t-lg" style="height: 40%"></div>
+<div class="w-full bg-primary/30 rounded-t-lg" style="height: 55%"></div>
+<div class="w-full bg-primary/20 rounded-t-lg" style="height: 35%"></div>
+<div class="w-full bg-primary/50 rounded-t-lg" style="height: 75%"></div>
+<div class="w-full bg-primary/40 rounded-t-lg" style="height: 60%"></div>
+<div class="w-full bg-primary/80 rounded-t-lg" style="height: 95%"></div>
+<div class="w-full bg-primary rounded-t-lg" style="height: 100%"></div>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -right-8 -bottom-8 text-primary/5 text-[180px] font-thin">insights</span>
+</div>
+<div class="bg-surface-container-highest p-8 rounded-xl flex flex-col justify-center items-center text-center">
+<div class="h-16 w-16 bg-white rounded-full flex items-center justify-center mb-4 whisper-shadow">
+<span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
+</div>
+<h3 class="font-headline font-extrabold text-on-surface mb-2">Security Audit</h3>
+<p class="text-xs text-on-surface-variant mb-6">Last system-wide permission audit was completed on Oct 12, 2023.</p>
+<button class="text-primary text-sm font-bold hover:underline">Download Report</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Navigation Shell Support (Mobile) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.05)] px-6 py-3 flex justify-between items-center z-50">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="text-[10px] font-bold">Users</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="text-[10px] font-medium">Courses</span>
+</a>
+<div class="h-12 w-12 atmospheric-gradient rounded-full flex items-center justify-center text-white -mt-8 border-4 border-background whisper-shadow">
+<span class="material-symbols-outlined">add</span>
+</div>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-[10px] font-medium">Academic</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</div>
+</body></html>

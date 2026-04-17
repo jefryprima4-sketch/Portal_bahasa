@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quiz Architect | Portal Bahasa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#cbe7f5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "on-surface-variant": "#424752",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary-container": "#983c00",
+                        "on-secondary-container": "#4e6874",
+                        "surface-container": "#edeeef",
+                        "primary-fixed": "#d7e2ff",
+                        "secondary-fixed-dim": "#afcbd8",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#722b00",
+                        "surface-dim": "#d9dadb",
+                        "on-tertiary-fixed": "#351000",
+                        "tertiary-fixed": "#ffdbcc",
+                        "secondary": "#48626e",
+                        "inverse-primary": "#abc7ff",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-fixed": "#001b3f",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "on-primary-container": "#bad0ff",
+                        "outline-variant": "#c2c6d4",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "outline": "#727784",
+                        "surface-variant": "#e1e3e4",
+                        "primary": "#004085",
+                        "on-tertiary-container": "#ffc2a7",
+                        "secondary-container": "#cbe7f5",
+                        "on-background": "#191c1d",
+                        "primary-container": "#1d57a7",
+                        "on-surface": "#191c1d",
+                        "on-secondary-fixed-variant": "#304a55",
+                        "on-secondary-fixed": "#021f29",
+                        "on-primary-fixed-variant": "#00458f",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface": "#f8f9fa",
+                        "background": "#f8f9fa",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#abc7ff",
+                        "surface-tint": "#255dad"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .whisper-shadow {
+            box-shadow: 0px 12px 32px rgba(25, 28, 29, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-secondary-fixed">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-lg flex justify-between items-center px-8 py-3">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-blue-950 dark:text-white font-headline">Portal Bahasa</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="font-manrope font-medium tracking-tight text-slate-500 dark:text-slate-400 hover:text-blue-900 dark:hover:text-blue-100 transition-colors" href="#">Dashboard</a>
+<a class="font-manrope font-medium tracking-tight text-slate-500 dark:text-slate-400 hover:text-blue-900 dark:hover:text-blue-100 transition-colors" href="#">Analytics</a>
+<a class="font-manrope font-medium tracking-tight text-slate-500 dark:text-slate-400 hover:text-blue-900 dark:hover:text-blue-100 transition-colors" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined text-slate-500 p-2 rounded-full hover:bg-slate-100 cursor-pointer" data-icon="notifications">notifications</span>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-5 py-2 rounded-xl font-medium text-sm whisper-shadow hover:opacity-90 transition-all">
+                Create New
+            </button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container ml-2">
+<img alt="Administrator profile photo" class="w-full h-full object-cover" data-alt="Professional headshot of a middle-aged academic administrator in a clean office setting, natural lighting, soft focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiGwKdDWLe8DefO7i_31SuZZRgmeZoAk3xdWFBDI7pHuU_DUbxU4Fvk-_Yah19csHqzccium4oWrQ1pz8Mo5rzF4B1wN_fuBOmP99tHodGrQwePgXvHM_Yl8f8TJuU7X4YmkB21sp5Bf7FjPm0V4whMUEHHGtBRSh1lOKbx9-NXJerI9vXy4QYZ1ppz9pVXYirN4xJnSJpGNpD_RsN8Nal09HxjfDrodgBVw_zJ3o8E_Q89ozK_sEsZRXHmJL1Wwt7NIMApuAOq8V5"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-100 dark:bg-slate-950 flex flex-col p-4 gap-2 pt-20">
+<div class="mb-6 px-4">
+<h2 class="text-lg font-black text-blue-900 dark:text-blue-200 font-headline">Admin Console</h2>
+<p class="text-xs text-slate-500 font-semibold font-manrope">Instructor Access</p>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-900/50 hover:translate-x-1 transition-transform duration-200 font-manrope text-sm font-semibold rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>User Directory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-900/50 hover:translate-x-1 transition-transform duration-200 font-manrope text-sm font-semibold rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+<span>Course Catalog</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-blue-900 dark:text-blue-100 bg-white dark:bg-slate-900 font-bold rounded-lg whisper-shadow transition-transform duration-200 font-manrope text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span>
+<span>Quiz Architect</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-900/50 hover:translate-x-1 transition-transform duration-200 font-manrope text-sm font-semibold rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+<span>Academic Records</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-900/50 hover:translate-x-1 transition-transform duration-200 font-manrope text-sm font-semibold rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</div>
+<button class="mt-4 mx-2 bg-blue-800 text-white py-2 rounded-xl font-bold text-sm whisper-shadow active:scale-95 transition-all">
+            New Course
+        </button>
+<div class="mt-auto border-t border-slate-200 dark:border-slate-800 pt-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 font-semibold text-sm hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-error font-semibold text-sm hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 pb-12 px-12 min-h-screen">
+<div class="max-w-5xl mx-auto">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-10">
+<div class="asymmetric-layout">
+<span class="text-primary font-manrope font-bold text-sm tracking-widest uppercase mb-2 block">Curriculum Management</span>
+<h1 class="text-4xl font-extrabold font-headline tracking-tight text-on-surface">Quiz Architect</h1>
+<p class="text-on-surface-variant mt-2 max-w-lg font-body leading-relaxed">Design immersive language assessments with the curator's touch. Balance listening, reading, and expression.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2.5 rounded-xl font-semibold text-sm text-primary hover:bg-primary-container/10 transition-colors">Preview Quiz</button>
+<button class="px-8 py-2.5 rounded-xl font-bold text-sm bg-gradient-to-br from-primary to-primary-container text-on-primary whisper-shadow hover:opacity-90 transition-all">Publish</button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-8">
+<!-- Left Column: Settings -->
+<div class="col-span-12 lg:col-span-4 space-y-8">
+<!-- Quiz Details Card -->
+<section class="bg-surface-container-lowest p-8 rounded-xl whisper-shadow border border-outline-variant/10">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+<h3 class="font-headline font-bold text-lg">Quiz Details</h3>
+</div>
+<div class="space-y-6">
+<div>
+<label class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Quiz Title</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-3 px-4 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/20" placeholder="Advanced French: Listening Comprehension" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Duration (min)</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-3 px-4 text-on-surface focus:ring-2 focus:ring-primary/20" type="number" value="45"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Pass Grade (%)</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-3 px-4 text-on-surface focus:ring-2 focus:ring-primary/20" type="number" value="70"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Skill Category Selection -->
+<section class="bg-surface-container-low p-8 rounded-xl">
+<label class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-4">Skill Category</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 bg-primary text-on-primary rounded-full text-xs font-bold flex items-center gap-2 cursor-pointer transition-all">
+<span class="material-symbols-outlined text-base" data-icon="hearing">hearing</span> Listening
+                            </span>
+<span class="px-4 py-2 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-semibold flex items-center gap-2 cursor-pointer hover:bg-primary-container/20 transition-all">
+<span class="material-symbols-outlined text-base" data-icon="auto_stories">auto_stories</span> Reading
+                            </span>
+<span class="px-4 py-2 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-semibold flex items-center gap-2 cursor-pointer hover:bg-primary-container/20 transition-all">
+<span class="material-symbols-outlined text-base" data-icon="edit_note">edit_note</span> Writing
+                            </span>
+<span class="px-4 py-2 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-semibold flex items-center gap-2 cursor-pointer hover:bg-primary-container/20 transition-all">
+<span class="material-symbols-outlined text-base" data-icon="record_voice_over">record_voice_over</span> Speaking
+                            </span>
+</div>
+</section>
+<!-- Audio Upload Area (Listening Context) -->
+<section class="border-2 border-dashed border-outline-variant/40 rounded-xl p-8 text-center hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="material-symbols-outlined text-4xl text-outline mb-4 group-hover:text-primary transition-colors" data-icon="cloud_upload">cloud_upload</span>
+<h4 class="font-headline font-bold text-on-surface">Upload Audio Context</h4>
+<p class="text-xs text-on-surface-variant mt-1">MP3, WAV, or AAC (Max 20MB)</p>
+<button class="mt-4 px-4 py-2 rounded-lg bg-surface-container-high text-xs font-bold hover:bg-surface-container-highest transition-colors">Select File</button>
+</section>
+</div>
+<!-- Right Column: Question Builder -->
+<div class="col-span-12 lg:col-span-8 space-y-6">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold font-headline">Question Builder</h2>
+<div class="flex gap-2">
+<button class="p-2 rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-colors" title="Add MCQ">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+</button>
+<button class="p-2 rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-colors" title="Add Essay">
+<span class="material-symbols-outlined" data-icon="subject">subject</span>
+</button>
+</div>
+</div>
+<!-- Question Card 1: MCQ -->
+<div class="bg-surface-container-lowest p-8 rounded-xl whisper-shadow relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-sm">1</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-fixed-variant rounded-full text-[10px] font-bold uppercase tracking-widest">Multiple Choice</span>
+</div>
+<div class="flex gap-1">
+<button class="p-2 text-outline hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg" data-icon="content_copy">content_copy</span></button>
+<button class="p-2 text-outline hover:text-error transition-colors"><span class="material-symbols-outlined text-lg" data-icon="delete">delete</span></button>
+</div>
+</div>
+<div class="space-y-6">
+<div>
+<input class="w-full text-lg font-headline font-semibold bg-transparent border-none focus:ring-0 p-0 placeholder:text-outline-variant" placeholder="Enter your question text..." type="text" value="D'après l'audio, pourquoi le narrateur est-il surpris par la réponse du boulanger ?"/>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-4 group">
+<div class="w-5 h-5 rounded-full border-2 border-primary bg-primary flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-white"></div>
+</div>
+<input class="flex-1 bg-surface-container-low/50 border-none rounded-xl py-3 px-4 text-sm font-medium focus:bg-surface-container-low transition-colors" type="text" value="Le prix du pain a augmenté de façon inattendue."/>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="w-5 h-5 rounded-full border-2 border-outline group-hover:border-primary transition-colors"></div>
+<input class="flex-1 bg-surface-container-low/50 border-none rounded-xl py-3 px-4 text-sm font-medium focus:bg-surface-container-low transition-colors" type="text" value="Le boulanger a fermé sa boutique plus tôt."/>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="w-5 h-5 rounded-full border-2 border-outline group-hover:border-primary transition-colors"></div>
+<input class="flex-1 bg-surface-container-low/50 border-none rounded-xl py-3 px-4 text-sm font-medium focus:bg-surface-container-low transition-colors" type="text" value="Le boulanger a offert le pain gratuitement."/>
+</div>
+<button class="ml-9 text-xs font-bold text-primary flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span> Add Option
+                                </button>
+</div>
+</div>
+</div>
+<!-- Question Card 2: Essay -->
+<div class="bg-surface-container-lowest p-8 rounded-xl whisper-shadow relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary-fixed-dim"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center font-bold text-sm">2</span>
+<span class="px-3 py-1 bg-surface-variant text-on-surface-variant rounded-full text-[10px] font-bold uppercase tracking-widest">Essay / Open Response</span>
+</div>
+<div class="flex gap-1">
+<button class="p-2 text-outline hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg" data-icon="content_copy">content_copy</span></button>
+<button class="p-2 text-outline hover:text-error transition-colors"><span class="material-symbols-outlined text-lg" data-icon="delete">delete</span></button>
+</div>
+</div>
+<div class="space-y-6">
+<div>
+<input class="w-full text-lg font-headline font-semibold bg-transparent border-none focus:ring-0 p-0" placeholder="Enter your essay prompt..." type="text" value="Résumez les trois points principaux de la conversation en vos propres mots (environ 50 mots)."/>
+</div>
+<div class="h-32 w-full bg-surface-container-low rounded-xl p-4 text-outline-variant text-sm italic">
+                                Placeholder for student response area...
+                            </div>
+<div class="flex justify-end items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="text-xs font-semibold text-on-surface-variant">Min words:</span>
+<input class="w-16 bg-surface-container-low border-none rounded-lg py-1 px-2 text-xs font-bold text-center" type="number" value="30"/>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-semibold text-on-surface-variant">Max words:</span>
+<input class="w-16 bg-surface-container-low border-none rounded-lg py-1 px-2 text-xs font-bold text-center" type="number" value="100"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Add Component Anchor -->
+<div class="flex justify-center py-4">
+<button class="group flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full border-2 border-dashed border-outline-variant flex items-center justify-center group-hover:bg-primary/5 group-hover:border-primary transition-all">
+<span class="material-symbols-outlined text-outline group-hover:text-primary" data-icon="add">add</span>
+</div>
+<span class="text-xs font-bold text-outline group-hover:text-primary">Insert Next Module</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

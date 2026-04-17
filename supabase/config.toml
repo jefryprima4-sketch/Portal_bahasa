@@ -1,0 +1,6 @@
+project_id = "your-project-id"
+[analytics]
+enabled = true
+[[functions]]
+name = "submit-quiz"
+verify_jwt = true

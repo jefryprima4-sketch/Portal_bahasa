@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import docx; print\\(''ok''\\)\")",
+      "Bash(pip3 install:*)",
+      "Bash(ls:*)",
+      "Bash(for d:*)",
+      "Bash(do echo:*)",
+      "Read(//d/Dev/Portalbahasa/**)",
+      "Bash(done)",
+      "Bash(find \"src/app/\\(dashboard\\)/admin/courses\" -type f)",
+      "Bash(cat -A \"D:/Dev/Portalbahasa/src/app/\\(auth\\)/register/page.tsx\")",
+      "Bash(grep -n \"graded_at\\\\|reviewed_at\\\\|corrected_at\" src/lib/supabase/types.ts supabase/migrations/*.sql)",
+      "Bash(rtk npx:*)",
+      "Bash(find:*)",
+      "Bash(ls \"src/app/\\(dashboard\\)/instructor/courses/[id]/actions.ts\")",
+      "Bash(npx tsc:*)",
+      "Bash(ls \"D:/Dev/Portalbahasa/src/app/\\(dashboard\\)/\")",
+      "Bash(node:*)",
+      "Bash(cat -A \"D:/Dev/Portalbahasa/src/app/\\(dashboard\\)/instructor/dashboard/page.tsx\")",
+      "Bash(cat -An \"D:/Dev/Portalbahasa/src/app/\\(dashboard\\)/instructor/dashboard/page.tsx\")",
+      "Bash(xxd \"D:/Dev/Portalbahasa/src/app/\\(dashboard\\)/instructor/dashboard/page.tsx\")",
+      "Bash(npx next:*)",
+      "Bash(cd:*)",
+      "Bash(npm run:*)",
+      "Bash(cat:*)"
+    ]
+  }
+}
