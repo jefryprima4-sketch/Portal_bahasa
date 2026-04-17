@@ -51,6 +51,10 @@
     font-weight: 800;
     @apply tracking-tight;
   }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 transition-shadow;
+  }
 }
 
 .font-headline { font-family: var(--font-manrope), sans-serif; }
